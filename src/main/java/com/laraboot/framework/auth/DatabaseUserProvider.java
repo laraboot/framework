@@ -3,15 +3,15 @@ package com.laraboot.framework.auth;
 import com.laraboot.framework.contracts.auth.RememberToken;
 import com.laraboot.framework.contracts.auth.RetrieveAble;
 import com.laraboot.framework.contracts.auth.UserProvider;
-import com.qbhy.apiboot.app.repositories.UserRepository;
 import com.laraboot.framework.contracts.auth.AuthenticateAble;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.Map;
 
 public class DatabaseUserProvider implements UserProvider {
-    private UserRepository userRepository;
+    private CrudRepository<AuthenticateAble, Long> userRepository;
 
-    public DatabaseUserProvider(UserRepository userRepository) {
+    public DatabaseUserProvider(CrudRepository<AuthenticateAble, Long> userRepository) {
         this.userRepository = userRepository;
     }
 

@@ -3,7 +3,7 @@ package com.laraboot.framework.encryption;
 import com.laraboot.framework.contracts.encryption.DecryptException;
 import com.laraboot.framework.contracts.encryption.EncryptException;
 import com.laraboot.framework.contracts.kernel.SecretProvider;
-import org.apache.tomcat.util.buf.HexUtils;
+import com.sun.org.apache.xerces.internal.impl.dv.util.HexBin;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKeyFactory;
@@ -25,7 +25,7 @@ public class DesEncrypter extends BaseEncrypter {
             Cipher cipher = Cipher.getInstance("DES");
             cipher.init(Cipher.ENCRYPT_MODE, keyFactory.generateSecret(desKey), random);
             byte[] byteContent = value.getBytes(StandardCharsets.UTF_8);
-            return HexUtils.toHexString(cipher.doFinal(byteContent));
+            return HexBin.encode(cipher.doFinal(byteContent));
         } catch (Exception e) {
             throw new EncryptException(e.getMessage());
         }
@@ -39,7 +39,7 @@ public class DesEncrypter extends BaseEncrypter {
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
             Cipher cipher = Cipher.getInstance("DES");
             cipher.init(Cipher.DECRYPT_MODE, keyFactory.generateSecret(desKey), random);
-            byte[] byteContent = HexUtils.fromHexString(value);
+            byte[] byteContent = HexBin.decode(value);
             assert byteContent != null;
             return new String(cipher.doFinal(byteContent));
         } catch (Exception e) {
