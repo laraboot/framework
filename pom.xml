@@ -154,7 +154,7 @@
                     <includes>
                         <include>**/*</include>
                     </includes>
-                    <repositoryName>framework</repositoryName><!--对应github上创建的仓库名称 name-->
+                    <repositoryName>laraboot-framework</repositoryName><!--对应github上创建的仓库名称 name-->
                     <repositoryOwner>laraboot</repositoryOwner><!--github 仓库所有者即登录用户名-->
                 </configuration>
                 <executions>
