@@ -8,10 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Map;
 
-public class DatabaseUserProvider implements UserProvider {
-    private CrudRepository<AuthenticateAble, Long> userRepository;
+public class DatabaseUserProvider<T extends AuthenticateAble> implements UserProvider {
+    private CrudRepository<T, Long> userRepository;
 
-    public DatabaseUserProvider(CrudRepository<AuthenticateAble, Long> userRepository) {
+    public DatabaseUserProvider(CrudRepository<T, Long> userRepository) {
         this.userRepository = userRepository;
     }
 
