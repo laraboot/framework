@@ -2,14 +2,14 @@ package cn.laraboot.framework.auth;
 
 import cn.laraboot.framework.contracts.auth.GuardProvider;
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
 public class AuthServiceProvider implements FactoryBean<AuthManager> {
 
-    @Autowired
     private GuardProvider guardProvider;
+
+    public AuthServiceProvider(GuardProvider guardProvider) {
+        this.guardProvider = guardProvider;
+    }
 
     @Override
     public Class<?> getObjectType() {

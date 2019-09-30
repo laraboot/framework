@@ -3,16 +3,16 @@ package cn.laraboot.framework.hashing;
 import cn.laraboot.framework.contracts.hashing.Hasher;
 import cn.laraboot.framework.support.Manager;
 import cn.laraboot.framework.contracts.kernel.SecretProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
-@Component
 public class HashManager extends Manager<Hasher> implements Hasher {
 
-    @Autowired
-    SecretProvider secretProvider;
+    private SecretProvider secretProvider;
+
+    public HashManager(SecretProvider secretProvider) {
+        this.secretProvider = secretProvider;
+    }
 
     /**
      * 设置驱动供应商

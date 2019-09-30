@@ -2,23 +2,19 @@ package cn.laraboot.framework.http.middlewares.cross;
 
 import cn.laraboot.framework.contracts.kernel.pipeline.Stack;
 import cn.laraboot.framework.http.middlewares.HttpMiddleware;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
 public class CrossMiddleware extends HttpMiddleware {
 
     private Crosses crosses;
 
-    @Autowired
-    public void setCrosses(CrossProvider provider) {
+    public CrossMiddleware(CrossProvider provider) {
         this.crosses = provider.get();
     }
 

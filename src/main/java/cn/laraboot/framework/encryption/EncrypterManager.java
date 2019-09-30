@@ -6,16 +6,16 @@ import cn.laraboot.framework.contracts.encryption.DecryptException;
 import cn.laraboot.framework.contracts.encryption.EncryptException;
 import cn.laraboot.framework.contracts.encryption.Encrypter;
 import cn.laraboot.framework.contracts.kernel.SecretProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
-@Component
 public class EncrypterManager extends Manager<Encrypter> implements Encrypter {
 
-    @Autowired
-    SecretProvider secretProvider;
+    private SecretProvider secretProvider;
+
+    public EncrypterManager(SecretProvider secretProvider) {
+        this.secretProvider = secretProvider;
+    }
 
     /**
      * 设置驱动供应商
